@@ -1,0 +1,310 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opiniones Libres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #dc2626;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .header p {
+            margin: 10px 0 0;
+            font-size: 1em;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .semester {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #333;
+        }
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .professor-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .professor-card:hover {
+            transform: scale(1.05);
+        }
+        .professor-card img {
+            max-width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        .professor-card h3 {
+            margin: 10px 0;
+            color: #333;
+        }
+        .professor-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #dc2626;
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .btn:hover {
+            background-color: #b91c1c;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .form-container textarea {
+            width: 100%;
+            height: 150px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .rating {
+            margin-bottom: 20px;
+        }
+        .rating label {
+            font-size: 20px;
+            margin-right: 10px;
+        }
+        .rating input {
+            margin-right: 5px;
+        }
+        .reviews-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        .reviews-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .review-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Opiniones Libres</h1>
+        <p>Publica tus experiencias en clase</p>
+    </div>
+
+    <!-- Página Principal -->
+    <div class="container">
+        <h2 class="semester">Primer Semestre</h2>
+        <p class="subtitle">Posibles profesores</p>
+
+        <div class="grid">
+            <!-- Tarjeta de Mauricio Ramirez -->
+            <div class="professor-card">
+                <img src="/api/placeholder/300/200" alt="Mauricio Ramirez">
+                <h3>Mauricio Ramirez</h3>
+                <p>Introducción a la ingeniería</p>
+                <a href="#reseñas_mauricio_ramirez" class="btn">Ver reseñas</a>
+                <a href="#escribir_reseña_mauricio" class="btn">Escribir reseña</a>
+            </div>
+
+            <!-- Tarjeta de Mario Casallas -->
+            <div class="professor-card">
+                <img src="/api/placeholder/300/200" alt="Mario Casallas">
+                <h3>Mario Casallas</h3>
+                <p>Lógica Matemática</p>
+                <a href="#reseñas_mario_casallas" class="btn">Ver reseñas</a>
+                <a href="#escribir_reseña_mario" class="btn">Escribir reseña</a>
+            </div>
+
+            <!-- Tarjeta de David Moncada -->
+            <div class="professor-card">
+                <img src="/api/placeholder/300/200" alt="David Moncada">
+                <h3>David Moncada</h3>
+                <p>Lógica y algoritmos</p>
+                <a href="#reseñas_david_moncada" class="btn">Ver reseñas</a>
+                <a href="#escribir_reseña_david" class="btn">Escribir reseña</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulario de Reseña de Mauricio Ramirez -->
+    <div id="escribir_reseña_mauricio" class="container">
+        <div class="form-container">
+            <h2>Deja tu reseña para Mauricio Ramirez</h2>
+            <form id="form_mauricio">
+                <textarea name="review" id="review_mauricio" placeholder="Escribe tu reseña aquí..." required></textarea>
+                <div class="rating">
+                    <label>Puntuación: </label>
+                    <input type="radio" name="rating_mauricio" value="1"> 1
+                    <input type="radio" name="rating_mauricio" value="2"> 2
+                    <input type="radio" name="rating_mauricio" value="3"> 3
+                    <input type="radio" name="rating_mauricio" value="4"> 4
+                    <input type="radio" name="rating_mauricio" value="5"> 5
+                </div>
+                <button type="button" class="btn" onclick="saveReview('mauricio')">Guardar Reseña</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Formulario de Reseña de Mario Casallas -->
+    <div id="escribir_reseña_mario" class="container">
+        <div class="form-container">
+            <h2>Deja tu reseña para Mario Casallas</h2>
+            <form id="form_mario">
+                <textarea name="review" id="review_mario" placeholder="Escribe tu reseña aquí..." required></textarea>
+                <div class="rating">
+                    <label>Puntuación: </label>
+                    <input type="radio" name="rating_mario" value="1"> 1
+                    <input type="radio" name="rating_mario" value="2"> 2
+                    <input type="radio" name="rating_mario" value="3"> 3
+                    <input type="radio" name="rating_mario" value="4"> 4
+                    <input type="radio" name="rating_mario" value="5"> 5
+                </div>
+                <button type="button" class="btn" onclick="saveReview('mario')">Guardar Reseña</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Formulario de Reseña de David Moncada -->
+    <div id="escribir_reseña_david" class="container">
+        <div class="form-container">
+            <h2>Deja tu reseña para David Moncada</h2>
+            <form id="form_david">
+                <textarea name="review" id="review_david" placeholder="Escribe tu reseña aquí..." required></textarea>
+                <div class="rating">
+                    <label>Puntuación: </label>
+                    <input type="radio" name="rating_david" value="1"> 1
+                    <input type="radio" name="rating_david" value="2"> 2
+                    <input type="radio" name="rating_david" value="3"> 3
+                    <input type="radio" name="rating_david" value="4"> 4
+                    <input type="radio" name="rating_david" value="5"> 5
+                </div>
+                <button type="button" class="btn" onclick="saveReview('david')">Guardar Reseña</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Reseñas de los profesores -->
+    <div id="reseñas_mauricio_ramirez" class="container reviews-container">
+        <h2>Reseñas de Mauricio Ramirez</h2>
+        <div id="reviews_mauricio"></div>
+    </div>
+
+    <div id="reseñas_mario_casallas" class="container reviews-container">
+        <h2>Reseñas de Mario Casallas</h2>
+        <div id="reviews_mario"></div>
+    </div>
+
+    <div id="reseñas_david_moncada" class="container reviews-container">
+        <h2>Reseñas de David Moncada</h2>
+        <div id="reviews_david"></div>
+    </div>
+
+    <script>
+        // Función para guardar reseñas
+        function saveReview(professor) {
+            const reviewText = document.getElementById(`review_${professor}`).value;
+            const rating = document.querySelector(`input[name="rating_${professor}"]:checked`)?.value || 'No calificado';
+
+            if (reviewText.trim() === '') {
+                alert('Por favor, escribe una reseña.');
+                return;
+            }
+
+            // Obtener reseñas existentes o inicializar un array vacío
+            const savedReviews = JSON.parse(localStorage.getItem(`${professor}_reviews`)) || [];
+            savedReviews.push({ review: reviewText, rating: rating });
+
+            // Guardar en localStorage
+            localStorage.setItem(`${professor}_reviews`, JSON.stringify(savedReviews));
+
+            // Limpiar el campo de texto
+            document.getElementById(`review_${professor}`).value = '';
+
+            // Mostrar las reseñas actualizadas
+            loadReviews(professor);
+            alert('Reseña guardada correctamente.');
+        }
+
+        // Función para cargar reseñas
+        function loadReviews(professor) {
+            const savedReviews = JSON.parse(localStorage.getItem(`${professor}_reviews`)) || [];
+            const reviewsContainer = document.getElementById(`reviews_${professor}`);
+
+            // Limpiar el contenedor de reseñas
+            reviewsContainer.innerHTML = '';
+
+            // Mostrar cada reseña
+            savedReviews.forEach((review, index) => {
+                const reviewItem = document.createElement('div');
+                reviewItem.className = 'review-item';
+                reviewItem.innerHTML = `
+                    <p>${review.review}</p>
+                    <p><strong>Calificación:</strong> ${review.rating}</p>
+                `;
+                reviewsContainer.appendChild(reviewItem);
+            });
+        }
+
+        // Cargar reseñas al acceder a la sección
+        window.addEventListener('hashchange', () => {
+            const hash = window.location.hash;
+            if (hash.startsWith('#reseñas_')) {
+                const professor = hash.replace('#reseñas_', '');
+                loadReviews(professor);
+            }
+        });
+
+        // Cargar reseñas al cargar la página si hay un hash en la URL
+        if (window.location.hash.startsWith('#reseñas_')) {
+            const professor = window.location.hash.replace('#reseñas_', '');
+            loadReviews(professor);
+        }
+    </script>
+</body>
+</html>
